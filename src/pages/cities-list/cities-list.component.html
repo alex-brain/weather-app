@@ -1,0 +1,15 @@
+<div class="input-group cities-list">
+  <input type="text" class="form-control"
+         [(ngModel)] = "selectedCity"
+         placeholder="Enter the city name...">
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button" (click)="addCity();">Show weather</button>
+  </span>
+</div>
+<h3>You are in: {{userCity}}</h3>
+<div *ngIf="cities.length">
+  <ul>
+
+    <li *ngFor="let city of cities">{{city}}</li>
+  </ul>
+</div>

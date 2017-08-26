@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CityService} from '../services/city/city.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  constructor(private cityService: CityService) {
+  }
+
+  getCurrentCityName() {
+    this.cityService.getCurrentCityName();
+  }
+
+  ngOnInit() {
+   // this.getCurrentCityName();
+  }
 }
