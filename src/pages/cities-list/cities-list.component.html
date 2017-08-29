@@ -1,6 +1,6 @@
 <div class="input-group cities-list">
   <input type="text" class="form-control"
-         [(ngModel)] = "selectedCity"
+         [(ngModel)]="selectedCity"
          placeholder="Enter the city name...">
   <span class="input-group-btn">
     <button class="btn btn-secondary" type="button" (click)="addCity();">Show weather</button>
@@ -8,8 +8,16 @@
 </div>
 <h3>You are in: {{userCity}}</h3>
 <div *ngIf="cities.length">
-  <ul>
-
-    <li *ngFor="let city of cities">{{city}}</li>
+  <ul class="list-group cities-list">
+    <li class="list-group-item" *ngFor="let city of cities">
+      <div class="item-title">
+        {{city.title}}
+      </div>
+      <button type="button"
+              class="item-delete-btn btn btn-danger btn-sm"
+              (click)="deleteCity(city.id)">
+        Delete
+      </button>
+    </li>
   </ul>
 </div>
