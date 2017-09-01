@@ -1,3 +1,22 @@
-<p>
-  weather works!
-</p>
+<div class="weather-info" *ngIf="weatherInfo">
+  <ul class="list-group">
+    <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.temp">
+      <b>Temperature:</b> {{weatherInfo.main.temp}}
+    </li>
+    <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.pressure">
+      <b>Pressure:</b> {{weatherInfo.main.pressure}}
+    </li>
+    <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.humidity">
+      <b>Humidity:</b> {{weatherInfo.main.humidity}}
+    </li>
+    <li class="list-group-item" *ngIf="weatherInfo.wind && weatherInfo.wind.speed">
+      <b>Wind speed:</b> {{weatherInfo.wind.speed}}
+    </li>
+    <li class="list-group-item" *ngIf="weatherInfo.wind && weatherInfo.wind.deg">
+      <b>Wind direction:</b> {{weatherInfo.wind.deg}}
+    </li>
+    <li class="list-group-item" *ngIf="weatherInfo.clouds && weatherInfo.clouds.all">
+      <b>Cloudiness:</b> {{weatherInfo.clouds.all}}
+    </li>
+  </ul>
+</div>

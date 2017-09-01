@@ -15,10 +15,16 @@ export class ApiService {
       });
   }
 
-  getWeatherInfo() {
-    return this.http.get('http://api.openweathermap.org/data/2.5/weather?units=metric&q=London&APPID=d1148e4efc9bfbde0e2aa799e83a26ba')
+  getCurrentWeatherInfo(cityName) {
+    return this.http.get('http://api.openweathermap.org/data/2.5/weather?units=metric&APPID=d1148e4efc9bfbde0e2aa799e83a26ba&q=' + cityName)
       .map(res => {
-        console.log('weather info', res.json());
+        return res.json();
+      });
+  }
+
+  getWeatherForecastInfo(cityName) {
+    return this.http.get('http://api.openweathermap.org/data/2.5/forecast?units=metric&APPID=d1148e4efc9bfbde0e2aa799e83a26ba&q=' + cityName)
+      .map(res => {
         return res.json();
       });
   }

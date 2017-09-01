@@ -6,12 +6,12 @@
     <button class="btn btn-secondary" type="button" (click)="addCity();">Show weather</button>
   </span>
 </div>
-<h3>You are in: {{userCity}}</h3>
+<h3>You are in: <a [routerLink]="['/weather-info', userCity]">{{userCity}}</a></h3>
 <div *ngIf="cities.length">
   <ul class="list-group cities-list">
     <li class="list-group-item" *ngFor="let city of cities">
       <div class="item-title">
-        <a [routerLink]="['/weather-info', city.id]">{{city.title}}</a>
+        <a [routerLink]="['/weather-info', city.title]">{{city.title}}</a>
       </div>
       <button type="button"
               class="item-delete-btn btn btn-danger btn-sm"

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 
 import { AppComponent } from './app.component';
 import { CitiesListComponent } from '../pages/cities-list/cities-list.component';
@@ -28,7 +29,8 @@ import { ApiService } from '../services/api/api.service';
     CityService,
     WeatherService,
     LocalStorageService,
-    ApiService
+    ApiService,
+    NgSpinningPreloader
   ],
   bootstrap: [AppComponent]
 })
