@@ -11,7 +11,7 @@
   <ul class="list-group cities-list">
     <li class="list-group-item" *ngFor="let city of cities">
       <div class="item-title">
-        <a [routerLink]="['/weather', city.id]">{{city.title}}</a>
+        <a [routerLink]="['/weather-info', city.id]">{{city.title}}</a>
       </div>
       <button type="button"
               class="item-delete-btn btn btn-danger btn-sm"

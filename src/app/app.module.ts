@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CitiesListComponent } from '../pages/cities-list/cities-list.component';
-import { CityService } from '../services/city/city.service';
-import { ApiService } from '../services/api/api.service';
 import { WeatherComponent } from '../pages/weather/weather.component';
+import { CityService } from '../services/city/city.service';
+import { WeatherService } from '../services/weather/weather.service';
+import { ApiService } from '../services/api/api.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { WeatherComponent } from '../pages/weather/weather.component';
   ],
   providers: [
     CityService,
+    WeatherService,
     ApiService
   ],
   bootstrap: [AppComponent]
