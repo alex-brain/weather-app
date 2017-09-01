@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 import { ApiService } from '../api/api.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -9,12 +10,13 @@ export class CityService {
   private cities: Array<{ id: string, title: string }> = [];
   private userCity = '';
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private localStorageService: LocalStorageService) {
   }
 
   addCity(city) {
     if (city) {
       this.cities.push(city);
+      this.localStorageService.cacheData('cities', this.cities);
     }
   }
 
@@ -24,9 +26,13 @@ export class CityService {
         this.cities.splice(index, 1);
       }
     });
+    this.localStorageService.cacheData('cities', this.cities);
   }
 
   getCityList() {
+    if (this.localStorageService.getCache('cities')) {
+      this.cities = this.localStorageService.getCache('cities');
+    }
     return this.cities;
   }
 

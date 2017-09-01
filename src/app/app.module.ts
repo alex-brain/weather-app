@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CitiesListComponent } from '../pages/cities-list/cities-list.component';
 import { WeatherComponent } from '../pages/weather/weather.component';
 import { CityService } from '../services/city/city.service';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { WeatherService } from '../services/weather/weather.service';
 import { ApiService } from '../services/api/api.service';
 
@@ -26,6 +27,7 @@ import { ApiService } from '../services/api/api.service';
   providers: [
     CityService,
     WeatherService,
+    LocalStorageService,
     ApiService
   ],
   bootstrap: [AppComponent]
