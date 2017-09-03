@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { NgSpinningPreloader } from 'ng2-spinning-preloader';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { CitiesListComponent } from '../pages/cities-list/cities-list.component';
@@ -23,7 +24,8 @@ import { ApiService } from '../services/api/api.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule
   ],
   providers: [
     CityService,
