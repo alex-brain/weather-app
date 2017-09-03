@@ -7,7 +7,7 @@ import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
-import { CitiesListComponent } from '../pages/cities-list/cities-list.component';
+import { CityListComponent } from '../pages/city-list/city-list.component';
 import { WeatherComponent } from '../pages/weather/weather.component';
 import { CityService } from '../services/city/city.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
@@ -17,7 +17,7 @@ import { ApiService } from '../services/api/api.service';
 @NgModule({
   declarations: [
     AppComponent,
-    CitiesListComponent,
+    CityListComponent,
     WeatherComponent
   ],
   imports: [

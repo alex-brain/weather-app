@@ -77,8 +77,6 @@ export class WeatherComponent implements OnInit {
       this.lineChartData[0].data = this.weatherForecast.map(item => {
         return Math.round(item.main.temp);
       });
-      console.log('this.weatherForecast', this.weatherForecast);
-      console.log('weatherData', this.lineChartData);
       if (this.weatherInfo) {
         this.ngSpinningPreloader.stop();
       }

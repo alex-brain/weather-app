@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CityService {
 
-  private cities: Array<{ id: string, title: string }> = [];
+  private cities: Array<{ id: string, name: string }> = [];
   private userCity = '';
 
   constructor(private apiService: ApiService, private localStorageService: LocalStorageService) {

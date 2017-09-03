@@ -4,11 +4,11 @@ import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 import uuidv4 from 'uuid/v4';
 
 @Component({
-  selector: 'cities-list',
-  templateUrl: './cities-list.component.html',
-  styleUrls: ['./cities-list.component.css']
+  selector: 'city-list',
+  templateUrl: './city-list.component.html',
+  styleUrls: ['./city-list.component.css']
 })
-export class CitiesListComponent implements OnInit {
+export class CityListComponent implements OnInit {
   selectedCity = '';
   userCity = '';
   cities: Array<any> = [];
@@ -19,7 +19,7 @@ export class CitiesListComponent implements OnInit {
   addCity() {
     this.cityService.addCity({
       id: uuidv4(),
-      title: this.selectedCity
+      name: this.selectedCity
     });
     this.selectedCity = '';
   }
