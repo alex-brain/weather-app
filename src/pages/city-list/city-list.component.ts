@@ -37,6 +37,9 @@ export class CityListComponent implements OnInit {
     this.cityService.getCurrentCityName().subscribe(city => {
       this.userCity = city;
       this.ngSpinningPreloader.stop();
+    }, error => {
+      this.userCity = 'error';
+      this.ngSpinningPreloader.stop();
     });
     this.getCityList();
   }

@@ -9,7 +9,8 @@
         <button class="btn btn-secondary" type="button" (click)="addCity();">Add city</button>
       </span>
       </div>
-      <h3>You are in: <a [routerLink]="['/weather-info', userCity]">{{userCity}}</a></h3>
+      <h3 *ngIf="userCity !== 'error'; else errorMessage">You are in: <a [routerLink]="['/weather-info', userCity]">{{userCity}}</a></h3>
+      <ng-template #errorMessage><h3>Error determining your city</h3></ng-template>
       <div *ngIf="cities.length">
         <ul class="list-group cities-list">
           <li class="list-group-item" *ngFor="let city of cities">
