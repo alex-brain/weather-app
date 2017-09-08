@@ -17,11 +17,15 @@ export class CityListComponent implements OnInit {
   constructor(private cityService: CityService, private ngSpinningPreloader: NgSpinningPreloader) { }
 
   addCity() {
-    this.cityService.addCity({
-      id: uuidv4(),
-      name: this.selectedCity
-    });
-    this.selectedCity = '';
+    if (this.selectedCity) {
+      this.cityService.addCity({
+        id: uuidv4(),
+        name: this.selectedCity
+      });
+      this.selectedCity = '';
+    } else {
+      alert('You didn\'t enter the city');
+    }
   }
 
   deleteCity(cityId) {
