@@ -1,21 +1,25 @@
 <div class="container">
   <div class="d-flex justify-content-center">
     <div class="col-md-8 align-self-center">
-      <div class="input-group cities-list">
-        <input type="text" class="form-control"
-               [(ngModel)]="selectedCity"
-               placeholder="Enter the city name...">
-        <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button" (click)="addCity();">Add city</button>
-      </span>
-      </div>
-      <h3 *ngIf="userCity !== 'error'; else errorMessage">You are in: <a [routerLink]="['/weather-info', userCity]">{{userCity}}</a></h3>
+      <form (ngSubmit)="addCity()">
+        <div class="input-group cities-list">
+          <input type="text" class="form-control"
+                 [(ngModel)]="selectedCity"
+                 name="selectedCity"
+                 placeholder="Enter the city name...">
+          <span class="input-group-btn">
+        <button class="btn btn-secondary" type="submit">Add city</button>
+        </span>
+        </div>
+      </form>
+      <h3 *ngIf="userCity !== 'error'; else errorMessage">You are in: <a [routerLink]="['/weather-info', userCity]">{{userCity}}</a>
+      </h3>
       <ng-template #errorMessage><h3>Error determining your city</h3></ng-template>
       <div *ngIf="cities.length">
         <ul class="list-group cities-list">
           <li class="list-group-item" *ngFor="let city of cities">
             <div class="item-title">
-              <a [routerLink]="['/weather-info', city.title]">{{city.title}}</a>
+              <a [routerLink]="['/weather-info', city.name]">{{city.name}}</a>
             </div>
             <button type="button"
                     class="item-delete-btn btn btn-danger btn-sm"
