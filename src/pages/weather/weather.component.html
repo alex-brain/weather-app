@@ -1,7 +1,8 @@
 <div class="container">
   <div class="d-flex justify-content-center">
     <div class="col-md-8 align-self-center">
-      <div class="weather-info" *ngIf="weatherInfo">
+      <div class="weather-info" *ngIf="weatherInfo && weatherInfo !== 'error'; else currentWeatherError">
+        <h2 class="text-center">Current weather:</h2>
         <ul class="list-group">
           <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.temp">
             <b>Temperature:</b> {{weatherInfo.main.temp}}
@@ -23,10 +24,11 @@
           </li>
         </ul>
       </div>
+      <ng-template #currentWeatherError><h3>Sorry, something went wrong while retrieving information about the current weather...</h3></ng-template>
 
       <div class="row">
         <div class="col-md-12">
-          <div style="display: block;">
+          <div style="display: block;" *ngIf="weatherForecast && weatherForecast !== 'error'; else weatherForecastError">
             <canvas baseChart
                     [datasets]="lineChartData"
                     [labels]="lineChartLabels"
@@ -36,6 +38,7 @@
                     [chartType]="lineChartType">
             </canvas>
           </div>
+          <ng-template #weatherForecastError><h3>Sorry, something went wrong while retrieving information about the weather forecast...</h3></ng-template>
         </div>
       </div>
       <div class="d-flex justify-content-center">

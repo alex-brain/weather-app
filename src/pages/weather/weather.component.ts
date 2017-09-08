@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import { WeatherService } from '../../services/weather/weather.service';
-import { NgSpinningPreloader } from 'ng2-spinning-preloader';
+import {WeatherService} from '../../services/weather/weather.service';
+import {NgSpinningPreloader} from 'ng2-spinning-preloader';
 import 'rxjs/add/operator/switchMap';
 
 
@@ -50,8 +50,8 @@ export class WeatherComponent implements OnInit {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-  public lineChartLegend = true;
-  public lineChartType = 'line';
+  lineChartLegend = true;
+  lineChartType = 'line';
   cityName = '';
 
   constructor(private weatherService: WeatherService,
@@ -62,6 +62,11 @@ export class WeatherComponent implements OnInit {
   getCurrentWeatherInfo(cityName) {
     this.weatherService.getCurrentWeatherInfo(cityName).subscribe(weather => {
       this.weatherInfo = weather;
+      if (this.weatherForecast) {
+        this.ngSpinningPreloader.stop();
+      }
+    }, error => {
+      this.weatherInfo = 'error';
       if (this.weatherForecast) {
         this.ngSpinningPreloader.stop();
       }
@@ -77,6 +82,11 @@ export class WeatherComponent implements OnInit {
       this.lineChartData[0].data = this.weatherForecast.map(item => {
         return Math.round(item.main.temp);
       });
+      if (this.weatherInfo) {
+        this.ngSpinningPreloader.stop();
+      }
+    }, error => {
+      this.weatherForecast = 'error';
       if (this.weatherInfo) {
         this.ngSpinningPreloader.stop();
       }
