@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {CityListComponent} from '../pages/city-list/city-list.component';
+import {CitiesComponent} from '../pages/cities/cities.component';
 import {WeatherComponent} from '../pages/weather/weather.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'city-list', pathMatch: 'full'},
-  {path: 'city-list', component: CityListComponent},
+  {path: '', redirectTo: 'cities', pathMatch: 'full'},
+  {path: 'cities', component: CitiesComponent},
   {path: 'weather-info/:city-name', component: WeatherComponent},
 ];
 

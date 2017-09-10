@@ -1,32 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { CityService } from '../../services/city/city.service';
 import { NgSpinningPreloader } from 'ng2-spinning-preloader';
-import uuidv4 from 'uuid/v4';
 
 @Component({
-  selector: 'city-list',
-  templateUrl: './city-list.component.html',
-  styleUrls: ['./city-list.component.css']
+  selector: 'cities-component',
+  templateUrl: './cities.component.html',
+  styleUrls: ['./cities.component.css']
 })
-export class CityListComponent implements OnInit {
-  selectedCity = '';
+export class CitiesComponent implements OnInit {
+
   userCity = '';
   cities: Array<any> = [];
 
 
   constructor(private cityService: CityService, private ngSpinningPreloader: NgSpinningPreloader) { }
-
-  addCity() {
-    if (this.selectedCity) {
-      this.cityService.addCity({
-        id: uuidv4(),
-        name: this.selectedCity
-      });
-      this.selectedCity = '';
-    } else {
-      alert('You didn\'t enter the city');
-    }
-  }
 
   deleteCity(cityId) {
     this.cityService.deleteCity(cityId);

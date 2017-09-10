@@ -1,0 +1,11 @@
+<form (ngSubmit)="addCity()">
+  <div class="input-group cities-list">
+    <input type="text" class="form-control"
+           [(ngModel)]="selectedCity"
+           name="selectedCity"
+           placeholder="Enter the city name...">
+    <span class="input-group-btn">
+        <button class="btn btn-secondary" type="submit">Add city</button>
+        </span>
+  </div>
+</form>
