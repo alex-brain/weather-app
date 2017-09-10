@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CityService } from '../../services/city/city.service';
 import uuidv4 from 'uuid/v4';
 
-
-
 @Component({
   selector: 'add-city-form',
   templateUrl: './add-city-form.component.html',
