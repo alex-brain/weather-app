@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
-import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
@@ -12,6 +11,7 @@ import { WeatherComponent } from '../pages/weather/weather.component';
 import { AddCityFormComponent } from '../components/add-city-form/add-city-form.component';
 import { CityListComponent } from '../components/city-list/city-list.component';
 import { CurrentWeatherComponent } from '../components/current-weather/current-weather.component';
+import { WeatherForecastComponent } from '../components/weather-forecast/weather-forecast.component';
 import { CityService } from '../services/city/city.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { WeatherService } from '../services/weather/weather.service';
@@ -24,7 +24,8 @@ import { ApiService } from '../services/api/api.service';
     WeatherComponent,
     AddCityFormComponent,
     CityListComponent,
-    CurrentWeatherComponent
+    CurrentWeatherComponent,
+    WeatherForecastComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +38,7 @@ import { ApiService } from '../services/api/api.service';
     CityService,
     WeatherService,
     LocalStorageService,
-    ApiService,
-    NgSpinningPreloader
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

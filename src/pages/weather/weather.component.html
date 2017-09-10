@@ -1,49 +1,17 @@
 <div class="container">
   <div class="d-flex justify-content-center">
     <div class="col-md-8 align-self-center">
-      <div class="weather-info" *ngIf="weatherInfo && weatherInfo !== 'error'; else currentWeatherError">
-        <h2 class="text-center">Current weather:</h2>
-        <ul class="list-group">
-          <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.temp">
-            <b>Temperature:</b> {{weatherInfo.main.temp}}
-          </li>
-          <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.pressure">
-            <b>Pressure:</b> {{weatherInfo.main.pressure}}
-          </li>
-          <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.humidity">
-            <b>Humidity:</b> {{weatherInfo.main.humidity}}
-          </li>
-          <li class="list-group-item" *ngIf="weatherInfo.wind && weatherInfo.wind.speed">
-            <b>Wind speed:</b> {{weatherInfo.wind.speed}}
-          </li>
-          <li class="list-group-item" *ngIf="weatherInfo.wind && weatherInfo.wind.deg">
-            <b>Wind direction:</b> {{weatherInfo.wind.deg}}
-          </li>
-          <li class="list-group-item" *ngIf="weatherInfo.clouds && weatherInfo.clouds.all">
-            <b>Cloudiness:</b> {{weatherInfo.clouds.all}}
-          </li>
-        </ul>
-      </div>
-      <ng-template #currentWeatherError><h3>Sorry, something went wrong while retrieving information about the current weather...</h3></ng-template>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div style="display: block;" *ngIf="weatherForecast && weatherForecast !== 'error'; else weatherForecastError">
-            <canvas baseChart
-                    [datasets]="lineChartData"
-                    [labels]="lineChartLabels"
-                    [options]="lineChartOptions"
-                    [colors]="lineChartColors"
-                    [legend]="lineChartLegend"
-                    [chartType]="lineChartType">
-            </canvas>
+        <current-weather [cityName]="cityName"></current-weather>
+
+        <div class="row">
+          <div class="col-md-12">
+            <weather-forecast [cityName]="cityName"></weather-forecast>
           </div>
-          <ng-template #weatherForecastError><h3>Sorry, something went wrong while retrieving information about the weather forecast...</h3></ng-template>
         </div>
-      </div>
-      <div class="d-flex justify-content-center">
-        <a [routerLink]="['/cities']">To city list</a>
+        <div class="d-flex justify-content-center">
+          <a [routerLink]="['/cities']">To city list</a>
+        </div>
       </div>
     </div>
   </div>
-</div>

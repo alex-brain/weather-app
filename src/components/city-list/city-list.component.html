@@ -1,10 +1,38 @@
-<h3 *ngIf="userCity !== 'error'; else errorMessage">
-  You are in: <a [routerLink]="['/weather-info', userCity]">{{userCity}}</a>
-</h3>
+<div class="lds-css ng-scope col" *ngIf="!userCity; else userCityData">
+  <div class="lds-spinner" style="width:100%;height:100%">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<ng-template #userCityData>
+  <div class="user-city-info d-flex justify-content-between">
+    <h3 class="user-city" *ngIf="userCity !== 'error'; else errorMessage">
+      You are in:
+      <a [routerLink]="['/weather-info', userCity]">
+        {{userCity}}
+      </a>
+    </h3>
+    <button type="button"
+            class="update-btn btn btn-info btn-sm"
+            (click)="getCurrentUserCity()">
+      Update
+    </button>
+  </div>
+</ng-template>
 <ng-template #errorMessage><h3>Error determining your city</h3></ng-template>
 <div *ngIf="cities.length">
   <ul class="list-group cities-list">
-    <li class="list-group-item" *ngFor="let city of cities">
+    <li class="list-group-item d-flex justify-content-between" *ngFor="let city of cities">
       <div class="item-title">
         <a [routerLink]="['/weather-info', city.name]">{{city.name}}</a>
       </div>

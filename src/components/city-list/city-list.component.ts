@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CityService } from '../../services/city/city.service';
-import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 
 @Component({
   selector: 'city-list',
@@ -10,7 +9,16 @@ import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 export class CityListComponent implements OnInit {
   cities: Array<any> = [];
   userCity = '';
-  constructor(private cityService: CityService, private ngSpinningPreloader: NgSpinningPreloader) { }
+  constructor(private cityService: CityService) { }
+
+  getCurrentUserCity() {
+    this.userCity = '';
+    this.cityService.getCurrentCityName().subscribe(city => {
+      this.userCity = city;
+    }, error => {
+      this.userCity = 'error';
+    });
+  }
 
   deleteCity(cityId) {
     this.cityService.deleteCity(cityId);
@@ -21,14 +29,7 @@ export class CityListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ngSpinningPreloader.start();
-    this.cityService.getCurrentCityName().subscribe(city => {
-      this.userCity = city;
-      this.ngSpinningPreloader.stop();
-    }, error => {
-      this.userCity = 'error';
-      this.ngSpinningPreloader.stop();
-    });
+    this.getCurrentUserCity();
     this.getCityList();
   }
 

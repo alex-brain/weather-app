@@ -1,0 +1,32 @@
+<h2 class="text-center">Weather forecast:</h2>
+<div *ngIf="!weatherForecast; else weatherForecastData">
+  <div class="lds-css ng-scope" style="width: 200px; height: 200px;">
+    <div class="lds-spinner" style="width:100%;height:100%">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>
+<ng-template #weatherForecastData>
+  <div style="display: block;" *ngIf="weatherForecast && weatherForecast !== 'error'; else weatherForecastError">
+    <canvas baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType">
+    </canvas>
+  </div>
+  <ng-template #weatherForecastError><h3>Sorry, something went wrong while retrieving information about the weather forecast...</h3></ng-template>
+</ng-template>

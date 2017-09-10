@@ -1,0 +1,45 @@
+<h2 class="text-center">Current weather:</h2>
+<div *ngIf="!weatherInfo; else currentWeatherData">
+  <div class="lds-css ng-scope" style="width: 200px; height: 200px;">
+    <div class="lds-spinner" style="width:100%;height:100%">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>
+<ng-template #currentWeatherData>
+  <div class="weather-info" *ngIf="weatherInfo && weatherInfo !== 'error'; else currentWeatherError">
+    <ul class="list-group">
+      <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.temp">
+        <b>Temperature:</b> {{weatherInfo.main.temp}}
+      </li>
+      <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.pressure">
+        <b>Pressure:</b> {{weatherInfo.main.pressure}}
+      </li>
+      <li class="list-group-item" *ngIf="weatherInfo.main && weatherInfo.main.humidity">
+        <b>Humidity:</b> {{weatherInfo.main.humidity}}
+      </li>
+      <li class="list-group-item" *ngIf="weatherInfo.wind && weatherInfo.wind.speed">
+        <b>Wind speed:</b> {{weatherInfo.wind.speed}}
+      </li>
+      <li class="list-group-item" *ngIf="weatherInfo.wind && weatherInfo.wind.deg">
+        <b>Wind direction:</b> {{weatherInfo.wind.deg}}
+      </li>
+      <li class="list-group-item" *ngIf="weatherInfo.clouds && weatherInfo.clouds.all">
+        <b>Cloudiness:</b> {{weatherInfo.clouds.all}}
+      </li>
+    </ul>
+  </div>
+  <ng-template #currentWeatherError><h3>Sorry, something went wrong while retrieving information about the current weather...</h3></ng-template>
+</ng-template>
+
