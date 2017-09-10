@@ -1,13 +1,1 @@
-.cities-list {
-  margin: 20px 0;
-}
 
-.cities-list .list-group-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.item-delete-btn {
-  cursor: pointer;
-}

@@ -2,25 +2,7 @@
   <div class="d-flex justify-content-center">
     <div class="col-md-8 align-self-center">
       <add-city-form></add-city-form>
-      <h3 *ngIf="userCity !== 'error'; else errorMessage">
-        You are in: <a [routerLink]="['/weather-info', userCity]">{{userCity}}</a>
-      </h3>
-      <ng-template #errorMessage><h3>Error determining your city</h3></ng-template>
-      <div *ngIf="cities.length">
-        <ul class="list-group cities-list">
-          <li class="list-group-item" *ngFor="let city of cities">
-            <div class="item-title">
-              <a [routerLink]="['/weather-info', city.name]">{{city.name}}</a>
-            </div>
-            <button type="button"
-                    class="item-delete-btn btn btn-danger btn-sm"
-                    (click)="deleteCity(city.id)">
-              Delete
-            </button>
-          </li>
-        </ul>
-      </div>
-
+      <city-list></city-list>
     </div>
   </div>
 </div>
